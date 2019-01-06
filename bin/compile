@@ -20,6 +20,10 @@ curl -L --silent $DOWNLOAD_URL -o byond.zip
 unzip -q byond.zip
 rm byond.zip
 
+cd byond
+make install
+ls -l
+
 echo "exporting PATH" | indent
 PROFILE_PATH="$BUILD_DIR/.profile.d/byond.sh"
 mkdir -p $(dirname $PROFILE_PATH)
