@@ -21,7 +21,7 @@ unzip -q byond.zip
 rm byond.zip
 
 cd byond
-make install
+make here
 ls -l
 
 echo "exporting PATH" | indent
