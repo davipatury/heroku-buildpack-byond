@@ -1,0 +1,30 @@
+#!/bin/sh
+
+indent() {
+  sed -u 's/^/       /'
+}
+
+echo "-----> Install byond"
+BUILD_DIR=$1
+VENDOR_DIR="vendor"
+BYOND_MAJOR="512"
+BYOND_MINOR="1462"
+DOWNLOAD_URL="http://www.byond.com/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${BYOND_MINOR}_byond_linux.zip"
+
+echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
+
+cd $BUILD_DIR
+mkdir -p $VENDOR_DIR
+cd $VENDOR_DIR
+mkdir -p byond
+curl -L --silent $DOWNLOAD_URL -o byond.zip
+unzip byond.zip
+rm byond.zip
+
+cd byond
+ls -l
+
+echo "exporting PATH" | indent
+PROFILE_PATH="$BUILD_DIR/.profile.d/byond.sh"
+mkdir -p $(dirname $PROFILE_PATH)
+echo 'export PATH="$PATH:${HOME}/vendor/byond"' >> $PROFILE_PATH
