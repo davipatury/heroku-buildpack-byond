@@ -18,7 +18,7 @@ mkdir -p $VENDOR_DIR
 cd $VENDOR_DIR
 mkdir -p byond
 curl -L --silent $DOWNLOAD_URL -o byond.zip
-unzip byond.zip -q
+unzip -q byond.zip
 rm byond.zip
 
 echo "exporting PATH" | indent
