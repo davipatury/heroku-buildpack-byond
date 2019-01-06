@@ -22,7 +22,7 @@ rm byond.zip
 
 cd byond
 make here
-ls -l
+./bin/byondsetup
 
 echo "exporting PATH" | indent
 PROFILE_PATH="$BUILD_DIR/.profile.d/byond.sh"
